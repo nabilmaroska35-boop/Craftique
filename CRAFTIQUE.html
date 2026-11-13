@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:5500/moka.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRAFTIQUE | The Art of Gifting</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./CRAFTIQUE_files/css2" rel="stylesheet">
+
+<style>
+:root {
+  --wine:#591b2b;
+  --wine2:#762b3d;
+  --cream:#fbf3e9;
+  --beige:#ead9c7;
+  --ink:#321a20;
+  --muted:#806b67;
+  --line:#e7d5c5;
+  --white:#fffaf4;
+}
+
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+}
+button,input,textarea,select {font:inherit}
+button {cursor:pointer}
+
+.topbar {
+  min-height:76px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand {
+  font:600 35px 'Playfair Display',serif;
+  letter-spacing:2px;
+  color:var(--wine);
+}
+
+.tagline {
+  font-size:9px;
+  letter-spacing:4px;
+  text-align:center;
+  color:var(--wine);
+  margin-top:-2px;
+}
+
+.actions {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.outline,.bag-button {
+  border:1px solid var(--wine);
+  background:transparent;
+  color:var(--wine);
+  padding:10px 17px;
+  border-radius:30px;
+  font-weight:700;
+}
+
+.bag-button {
+  background:var(--wine);
+  color:white;
+}
+
+.count {
+  display:inline-grid;
+  place-items:center;
+  background:var(--beige);
+  color:var(--wine);
+  width:21px;
+  height:21px;
+  border-radius:50%;
+  margin-left:5px;
+  font-size:12px;
+}
+
+.hero {
+  min-height:340px;
+  padding:55px 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+  color:#fff8ef;
+  background:
+    linear-gradient(105deg,rgba(63,12,29,.95),rgba(92,24,44,.78)),
+    url('images/regular-magazine.jpg') center 42%/cover;
+}
+
+.hero-copy {max-width:560px}
+.eyebrow {
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#e8cdbb;
+}
+
+.hero h1 {
+  font:500 clamp(36px,5vw,58px)/1.12 'Playfair Display',serif;
+  margin:16px 0;
+}
+
+.hero p {
+  max-width:460px;
+  line-height:1.7;
+  color:#f0dfd4;
+}
+
+.primary {
+  border:0;
+  border-radius:30px;
+  padding:13px 24px;
+  background:#ead3bc;
+  color:var(--wine);
+  font-weight:700;
+  margin-top:12px;
+}
+
+.hero-note {
+  max-width:280px;
+  border:1px solid #ffffff66;
+  padding:24px;
+  background:#ffffff12;
+  backdrop-filter:blur(4px);
+  font:italic 22px 'Playfair Display',serif;
+  line-height:1.4;
+}
+
+.wrap {
+  max-width:1380px;
+  margin:auto;
+  padding:38px 4% 65px;
+}
+
+.section-head {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding-bottom:12px;
+  margin:0 0 22px;
+}
+
+.section-head h2 {
+  font:600 31px 'Playfair Display',serif;
+  margin:0;
+  color:var(--wine);
+}
+
+.section-head p {
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-bottom:40px;
+}
+
+.grid.addons {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.product {
+  border:1px solid var(--line);
+  border-radius:9px;
+  overflow:hidden;
+  background:#fffaf4;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  transition:.2s;
+}
+
+.product:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px #5a1b2b12;
+}
+
+.photo {
+  width:100%;
+  aspect-ratio:4/4.5;
+  background:#eee2d6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.photo img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.photo.placeholder {
+  background:linear-gradient(145deg,#eee1d4,#f8eee4);
+  padding:20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.placeholder-inner {
+  border:1px dashed #b99a8a;
+  padding:24px 12px;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.placeholder-inner b {
+  font:600 18px 'Playfair Display',serif;
+  color:var(--wine);
+}
+
+.placeholder-inner small {
+  font-size:11px;
+  line-height:1.5;
+}
+
+.info {
+  padding:13px 13px 15px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.info h3 {
+  font-size:15px;
+  margin:0 0 7px;
+}
+
+.info p {
+  font-size:12px;
+  line-height:1.45;
+  color:var(--muted);
+  margin:0 0 10px;
+  min-height:34px;
+}
+
+.price {
+  color:var(--wine);
+  font-weight:700;
+  margin-top:auto;
+  margin-bottom:10px;
+}
+
+.add {
+  border:0;
+  background:var(--wine);
+  color:white;
+  border-radius:25px;
+  padding:10px 15px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+
+.add:hover,.place:hover {background:var(--wine2)}
+
+.layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 330px;
+  gap:24px;
+  align-items:start;
+}
+
+.side {
+  position:sticky;
+  top:95px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.panel {
+  background:#fffaf4;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:18px;
+  box-shadow:0 6px 24px #41101b0d;
+}
+
+.panel h3 {
+  font:600 20px 'Playfair Display',serif;
+  color:var(--wine);
+  margin:0 0 15px;
+}
+
+.cart-list {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.cart-row {
+  display:grid;
+  grid-template-columns:55px 1fr auto;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  padding-bottom:11px;
+}
+
+.cart-row img {
+  width:55px;
+  height:65px;
+  object-fit:cover;
+  border-radius:5px;
+  background:#eee;
+}
+
+.cart-row b {font-size:12px}
+
+.cart-row small {
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.remove {
+  border:0;
+  background:none;
+  color:var(--wine);
+  font-size:18px;
+}
+
+.total {
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  padding-top:14px;
+}
+
+.field {margin-bottom:11px}
+
+.field label {
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.field input,.field textarea {
+  width:100%;
+  padding:11px 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffdf9;
+  outline-color:var(--wine);
+}
+
+.field textarea {
+  resize:vertical;
+  min-height:70px;
+}
+
+.place {
+  width:100%;
+  border:0;
+  background:var(--wine);
+  color:white;
+  padding:13px;
+  border-radius:25px;
+  font-weight:700;
+}
+
+.hint {
+  font-size:11px;
+  line-height:1.5;
+  color:var(--muted);
+  margin:9px 0 0;
+}
+
+.empty {
+  font-size:13px;
+  color:var(--muted);
+  padding:10px 0;
+}
+
+.footer {
+  background:#481321;
+  color:#f8eee5;
+  padding:30px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.footer .brand {color:#f8eee5}
+.footer small {font-size:11px;color:#dfc9c1}
+
+.modal {
+  position:fixed;
+  inset:0;
+  background:#1b090dcc;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:30;
+}
+
+.modal.show {display:flex}
+
+.modal-box {
+  background:var(--cream);
+  width:min(900px,100%);
+  max-height:88vh;
+  overflow:auto;
+  border-radius:15px;
+  padding:24px;
+}
+
+.modal-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.modal-head h2 {
+  font:600 27px 'Playfair Display',serif;
+  color:var(--wine);
+  margin:0;
+}
+
+.close {
+  border:0;
+  background:none;
+  font-size:25px;
+  color:var(--wine);
+}
+
+.admin-login {
+  max-width:360px;
+  margin:30px auto;
+}
+
+.admin-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+
+.admin-table th,.admin-table td {
+  padding:10px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+
+.admin-table th {color:var(--wine)}
+
+.admin-table select {
+  padding:6px;
+  border:1px solid var(--line);
+  border-radius:6px;
+}
+
+.admin-actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+.secondary {
+  border:1px solid var(--wine);
+  color:var(--wine);
+  background:transparent;
+  padding:9px 13px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.success {
+  background:#f0e5d8;
+  padding:15px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
+}
+
+.success.show {display:block}
+
+@media(max-width:950px) {
+  .layout {grid-template-columns:1fr}
+  .side {
+    position:static;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .grid.addons {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px) {
+  .topbar {
+    min-height:66px;
+    padding:0 4%;
+  }
+  .brand {font-size:26px}
+  .outline {padding:8px 10px}
+  .hero {
+    padding:42px 6%;
+    min-height:310px;
+  }
+  .hero-note {display:none}
+  .wrap {padding:28px 4%}
+  .grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .grid.addons {gap:10px}
+  .section-head h2 {font-size:25px}
+  .side {display:flex}
+  .footer {
+    flex-direction:column;
+    text-align:center;
+  }
+  .info {padding:10px 8px}
+  .info h3 {font-size:13px}
+  .info p {font-size:11px}
+  .price {font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <div class="brand">CRAFTIQUE</div>
+    <div class="tagline">THE ART OF GIFTING</div>
+  </div>
+
+  <div class="actions">
+    <button class="outline" onclick="openAdmin()">Admin</button>
+    <button class="bag-button" onclick="document.getElementById('shopping-bag').scrollIntoView({behavior:'smooth'})">
+      Shopping Bag <span class="count" id="bag-count">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Handcrafted personalised goods</div>
+    <h1>Turn Moments Into Timeless Memories</h1>
+    <p>
+      Discover personalised magazines, thoughtful gift boxes and bespoke keepsakes designed to celebrate your favourite memories.
+    </p>
+    <button class="primary" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+      EXPLORE COLLECTION →
+    </button>
+  </div>
+
+  <div class="hero-note">
+    “Every memory deserves to be kept beautifully.”
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="layout">
+
+    <div>
+      <section id="collection">
+        <div class="section-head">
+          <div>
+            <h2>Magazines Collection</h2>
+            <p>Your memories, beautifully told.</p>
+          </div>
+        </div>
+        <div class="grid" id="magazines">
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/regular-magazine.jpg" alt="Regular Magazine" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Regular Magazine</h3>
+        <p>8 Pages / 20 Photos custom editorial layout.</p>
+        <div class="price">375 EGP</div>
+        <button class="add" onclick="addToCart('regular')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/vip-magazine.jpg" alt="VIP Magazine" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>VIP Magazine</h3>
+        <p>12 Pages / 35 Photos premium storytelling magazine.</p>
+        <div class="price">450 EGP</div>
+        <button class="add" onclick="addToCart('vip')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/luxury-magazine.jpg" alt="Luxury Magazine" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Luxury Magazine</h3>
+        <p>18 Pages / 50 Photos ultimate luxury keepsake edition.</p>
+        <div class="price">510 EGP</div>
+        <button class="add" onclick="addToCart('luxury')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <div>
+            <h2>Gifts, Bundles &amp; Add-ons</h2>
+            <p>Complete your gift with our special extras.</p>
+          </div>
+        </div>
+        <div class="grid addons" id="addons">
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/portrait-bundle.png" alt="Regular Magazine &amp; Portrait Bundle" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Regular Magazine &amp; Portrait Bundle</h3>
+        <p>Includes Regular Magazine + Framed Portrait.</p>
+        <div class="price">500 EGP</div>
+        <button class="add" onclick="addToCart('bundle')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/gift-box.jpg" alt="Personalised Gift Box" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Personalised Gift Box</h3>
+        <p>Handcrafted luxury gift box with custom photos and ribbon.</p>
+        <div class="price">250 EGP</div>
+        <button class="add" onclick="addToCart('box')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/birthday-invitation.jpg" alt="Customized Online Birthday Invitation" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Customized Online Birthday Invitation</h3>
+        <p>Digital interactive online birthday invitation page.</p>
+        <div class="price">200 EGP</div>
+        <button class="add" onclick="addToCart('invitation')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/birthday-card.jpg" alt="Customized Birthday Card" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Customized Birthday Card</h3>
+        <p>Handmade folded birthday card with custom photo inserts.</p>
+        <div class="price">100 EGP</div>
+        <button class="add" onclick="addToCart('card')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo">
+         <img src="./CRAFTIQUE_files/birthday-quiz.jpg" alt="Customized Birthday Quiz" loading="lazy">
+       </div>
+      <div class="info">
+        <h3>Customized Birthday Quiz</h3>
+        <p>Who knows the birthday girl best? Fun custom quiz card.</p>
+        <div class="price">75 EGP</div>
+        <button class="add" onclick="addToCart('quiz')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo placeholder">
+         <div class="placeholder-inner">
+           <b>Customised Stickers</b>
+           <small>Product photo will be added<br>Real product photography pending</small>
+         </div>
+       </div>
+      <div class="info">
+        <h3>Customised Stickers</h3>
+        <p>Pack of 5 custom-designed weatherproof stickers.</p>
+        <div class="price">50 EGP</div>
+        <button class="add" onclick="addToCart('stickers')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  
+    <article class="product">
+      <div class="photo placeholder">
+         <div class="placeholder-inner">
+           <b>Premium Gift Packaging</b>
+           <small>Product photo will be added<br>Real product photography pending</small>
+         </div>
+       </div>
+      <div class="info">
+        <h3>Premium Gift Packaging</h3>
+        <p>Elegant kraft wrapping, custom tags and ribbon.</p>
+        <div class="price">100 EGP</div>
+        <button class="add" onclick="addToCart('packaging')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  </div>
+      </section>
+    </div>
+
+    <aside class="side">
+
+      <section class="panel" id="shopping-bag">
+        <h3>Your Shopping Bag</h3>
+        <div class="cart-list" id="cart-list"><div class="empty">Your bag is currently empty.</div></div>
+        <div class="total">
+          <span>Total</span>
+          <span id="cart-total">0 EGP</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>Complete Your Order</h3>
+
+        <form id="order-form">
+
+          <div class="field">
+            <label for="customer-name">Full Name *</label>
+            <input id="customer-name" required="" placeholder="Your full name">
+          </div>
+
+          <div class="field">
+            <label for="customer-phone">Phone Number *</label>
+            <input id="customer-phone" required="" type="tel" placeholder="01XXXXXXXXX">
+          </div>
+
+          <div class="field">
+            <label for="customer-email">Email (Optional)</label>
+            <input id="customer-email" type="email" placeholder="you@email.com">
+          </div>
+
+          <div class="field">
+            <label for="customer-address">Delivery Address *</label>
+            <textarea id="customer-address" required="" placeholder="City, area, street and building"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="customer-notes">Additional Notes</label>
+            <textarea id="customer-notes" placeholder="Any special requests?"></textarea>
+          </div>
+
+          <div class="total">
+            <span>Order Total</span>
+            <span id="form-total">0 EGP</span>
+          </div>
+
+          <button class="place" type="submit">PLACE ORDER</button>
+
+          <p class="hint">
+            Your order details will be saved on this browser. For receiving orders from different customers/devices, connect the website to an online database.
+          </p>
+
+          <div class="success" id="order-success"></div>
+        </form>
+      </section>
+
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <div class="brand">CRAFTIQUE</div>
+    <div class="tagline" style="color:#f8eee5">THE ART OF GIFTING</div>
+  </div>
+  <small>© 2026 CRAFTIQUE. All Rights Reserved.</small>
+</footer>
+
+<div class="modal" id="admin-modal">
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>CRAFTIQUE | Admin Dashboard</h2>
+      <button class="close" onclick="closeAdmin()">×</button>
+    </div>
+
+    <div id="admin-login" class="admin-login">
+      <p>Enter your admin password to view orders.</p>
+
+      <div class="field">
+        <input type="password" id="admin-password" placeholder="Admin password">
+      </div>
+
+      <button class="place" onclick="loginAdmin()">LOGIN</button>
+      <p class="hint">Demo password: Craftique2026. Change this before publishing.</p>
+    </div>
+
+    <div id="admin-content" style="display:none">
+
+      <div class="admin-actions">
+        <button class="secondary" onclick="exportOrders()">Export CSV</button>
+        <button class="secondary" onclick="renderAdmin()">Refresh</button>
+      </div>
+
+      <div id="admin-stats"></div>
+
+      <div style="overflow-x:auto">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+const products = [
+
+  {
+    id:'regular',
+    name:'Regular Magazine',
+    price:375,
+    desc:'8 Pages / 20 Photos custom editorial layout.',
+    image:'images/regular-magazine.jpg',
+    group:'mag'
+  },
+
+  {
+    id:'vip',
+    name:'VIP Magazine',
+    price:450,
+    desc:'12 Pages / 35 Photos premium storytelling magazine.',
+    image:'images/vip-magazine.jpg',
+    group:'mag'
+  },
+
+  {
+    id:'luxury',
+    name:'Luxury Magazine',
+    price:510,
+    desc:'18 Pages / 50 Photos ultimate luxury keepsake edition.',
+    image:'images/luxury-magazine.jpg',
+    group:'mag'
+  },
+
+  {
+    id:'bundle',
+    name:'Regular Magazine & Portrait Bundle',
+    price:500,
+    desc:'Includes Regular Magazine + Framed Portrait.',
+    image:'images/portrait-bundle.png',
+    group:'add'
+  },
+
+  {
+    id:'box',
+    name:'Personalised Gift Box',
+    price:250,
+    desc:'Handcrafted luxury gift box with custom photos and ribbon.',
+    image:'images/gift-box.jpg',
+    group:'add'
+  },
+
+  {
+    id:'invitation',
+    name:'Customized Online Birthday Invitation',
+    price:200,
+    desc:'Digital interactive online birthday invitation page.',
+    image:'images/birthday-invitation.jpg',
+    group:'add'
+  },
+
+  {
+    id:'card',
+    name:'Customized Birthday Card',
+    price:100,
+    desc:'Handmade folded birthday card with custom photo inserts.',
+    image:'images/birthday-card.jpg',
+    group:'add'
+  },
+
+  {
+    id:'quiz',
+    name:'Customized Birthday Quiz',
+    price:75,
+    desc:'Who knows the birthday girl best? Fun custom quiz card.',
+    image:'images/birthday-quiz.jpg',
+    group:'add'
+  },
+
+  {
+    id:'stickers',
+    name:'Customised Stickers',
+    price:50,
+    desc:'Pack of 5 custom-designed weatherproof stickers.',
+    image:null,
+    group:'add',
+    placeholder:'Product photo will be added'
+  },
+
+  {
+    id:'packaging',
+    name:'Premium Gift Packaging',
+    price:100,
+    desc:'Elegant kraft wrapping, custom tags and ribbon.',
+    image:null,
+    group:'add',
+    placeholder:'Product photo will be added'
+  }
+
+];
+
+let cart = JSON.parse(localStorage.getItem('craftique_cart') || '{}');
+let orders = JSON.parse(localStorage.getItem('craftique_orders') || '[]');
+
+function productCard(p) {
+
+  const photo = p.image
+    ? `<div class="photo">
+         <img src="${p.image}" alt="${p.name}" loading="lazy">
+       </div>`
+    : `<div class="photo placeholder">
+         <div class="placeholder-inner">
+           <b>${p.name}</b>
+           <small>${p.placeholder}<br>Real product photography pending</small>
+         </div>
+       </div>`;
+
+  return `
+    <article class="product">
+      ${photo}
+      <div class="info">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">${p.price} EGP</div>
+        <button class="add" onclick="addToCart('${p.id}')">
+          ADD TO BAG
+        </button>
+      </div>
+    </article>
+  `;
+}
+
+document.getElementById('magazines').innerHTML =
+  products.filter(p => p.group === 'mag').map(productCard).join('');
+
+document.getElementById('addons').innerHTML =
+  products.filter(p => p.group === 'add').map(productCard).join('');
+
+function save() {
+  localStorage.setItem('craftique_cart', JSON.stringify(cart));
+  localStorage.setItem('craftique_orders', JSON.stringify(orders));
+  renderCart();
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  save();
+}
+
+function changeQty(id, delta) {
+  cart[id] = (cart[id] || 0) + delta;
+
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+
+  save();
+}
+
+function removeItem(id) {
+  delete cart[id];
+  save();
+}
+
+function cartItems() {
+  return products.filter(p => cart[p.id] > 0);
+}
+
+function total() {
+  return cartItems().reduce(
+    (sum, p) => sum + p.price * cart[p.id],
+    0
+  );
+}
+
+function renderCart() {
+
+  let items = cartItems();
+
+  document.getElementById('bag-count').textContent =
+    items.reduce((sum, p) => sum + cart[p.id], 0);
+
+  document.getElementById('cart-total').textContent =
+    total() + ' EGP';
+
+  document.getElementById('form-total').textContent =
+    total() + ' EGP';
+
+  document.getElementById('cart-list').innerHTML =
+    items.length
+      ? items.map(p => `
+        <div class="cart-row">
+
+          ${
+            p.image
+              ? `<img src="${p.image}" alt="${p.name}">`
+              : `<div class="photo placeholder" style="width:55px;height:65px">✦</div>`
+          }
+
+          <div>
+            <b>${p.name}</b>
+            <small>${cart[p.id]} × ${p.price} EGP</small>
+
+            <div style="margin-top:6px">
+              <button class="secondary" onclick="changeQty('${p.id}',-1)">−</button>
+              <button class="secondary" onclick="changeQty('${p.id}',1)">+</button>
+            </div>
+          </div>
+
+          <button class="remove" onclick="removeItem('${p.id}')" aria-label="Remove">
+            ×
+          </button>
+
+        </div>
+      `).join('')
+      : '<div class="empty">Your bag is currently empty.</div>';
+}
+
+renderCart();
+
+document.getElementById('order-form').addEventListener('submit', e => {
+
+  e.preventDefault();
+
+  if (!cartItems().length) {
+    alert('Please add at least one product to your bag.');
+    return;
+  }
+
+  const order = {
+
+    id:'CRQ-' + Date.now().toString().slice(-7),
+
+    date:new Date().toLocaleString(),
+
+    name:document.getElementById('customer-name').value.trim(),
+
+    phone:document.getElementById('customer-phone').value.trim(),
+
+    email:document.getElementById('customer-email').value.trim(),
+
+    address:document.getElementById('customer-address').value.trim(),
+
+    notes:document.getElementById('customer-notes').value.trim(),
+
+    items:cartItems().map(p => ({
+      name:p.name,
+      price:p.price,
+      qty:cart[p.id]
+    })),
+
+    total:total(),
+
+    status:'Pending'
+
+  };
+
+  orders.unshift(order);
+
+  localStorage.setItem('craftique_orders', JSON.stringify(orders));
+
+  cart = {};
+
+  localStorage.setItem('craftique_cart', '{}');
+
+  renderCart();
+
+  document.getElementById('order-success').innerHTML = `
+    <b>Thank you!</b><br>
+    Your order has been saved successfully.<br>
+    Order number: ${order.id}
+  `;
+
+  document.getElementById('order-success').classList.add('show');
+
+  e.target.reset();
+
+});
+
+function openAdmin() {
+  document.getElementById('admin-modal').classList.add('show');
+}
+
+function closeAdmin() {
+  document.getElementById('admin-modal').classList.remove('show');
+}
+
+function loginAdmin() {
+
+  if (document.getElementById('admin-password').value === 'Craftique2026') {
+
+    document.getElementById('admin-login').style.display = 'none';
+
+    document.getElementById('admin-content').style.display = 'block';
+
+    renderAdmin();
+
+  } else {
+
+    alert('Incorrect password.');
+
+  }
+
+}
+
+function renderAdmin() {
+
+  document.getElementById('admin-stats').innerHTML = `
+    <p>
+      <b>Total orders:</b> ${orders.length}
+      &nbsp; | &nbsp;
+      <b>Total order value:</b>
+      ${orders.reduce((sum, o) => sum + o.total, 0)} EGP
+    </p>
+  `;
+
+  document.getElementById('orders-body').innerHTML =
+
+    orders.length
+
+      ? orders.map((o, i) => `
+
+        <tr>
+
+          <td>
+            ${o.id}<br>
+            <small>${o.date}</small>
+          </td>
+
+          <td>
+            <b>${o.name}</b><br>
+            ${o.phone}<br>
+            ${o.email || ''}<br>
+            ${o.address}<br>
+            ${o.notes || ''}
+          </td>
+
+          <td>
+            ${o.items.map(x => `${x.name} × ${x.qty}`).join('<br>')}
+          </td>
+
+          <td>${o.total} EGP</td>
+
+          <td>
+            <select onchange="updateStatus(${i},this.value)">
+              ${
+                ['Pending','Confirmed','Processing','Shipped','Delivered','Cancelled']
+                .map(s => `
+                  <option ${o.status === s ? 'selected' : ''}>${s}</option>
+                `).join('')
+              }
+            </select>
+          </td>
+
+          <td>
+            <button class="secondary" onclick="deleteOrder(${i})">
+              Delete
+            </button>
+          </td>
+
+        </tr>
+
+      `).join('')
+
+      : '<tr><td colspan="6">No orders yet.</td></tr>';
+
+}
+
+function updateStatus(i, status) {
+  orders[i].status = status;
+  localStorage.setItem('craftique_orders', JSON.stringify(orders));
+  renderAdmin();
+}
+
+function deleteOrder(i) {
+
+  if (confirm('Delete this order?')) {
+
+    orders.splice(i, 1);
+
+    localStorage.setItem('craftique_orders', JSON.stringify(orders));
+
+    renderAdmin();
+
+  }
+
+}
+
+function exportOrders() {
+
+  const rows = [
+
+    ['Order ID','Date','Name','Phone','Email','Address','Items','Total','Status'],
+
+    ...orders.map(o => [
+
+      o.id,
+      o.date,
+      o.name,
+      o.phone,
+      o.email,
+      o.address,
+      o.items.map(x => `${x.name} x${x.qty}`).join('; '),
+      o.total,
+      o.status
+
+    ])
+
+  ];
+
+  const csv = rows.map(r =>
+    r.map(v => '"' + String(v ?? '').replace(/"/g, '""') + '"').join(',')
+  ).join('\n');
+
+  const blob = new Blob(
+    ['\ufeff' + csv],
+    {type:'text/csv;charset=utf-8;'}
+  );
+
+  const a = document.createElement('a');
+
+  a.href = URL.createObjectURL(blob);
+
+  a.download = 'craftique-orders.csv';
+
+  a.click();
+
+  URL.revokeObjectURL(a.href);
+
+}
+
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
